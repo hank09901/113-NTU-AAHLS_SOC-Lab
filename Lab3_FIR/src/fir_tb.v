@@ -130,11 +130,11 @@ module fir_tb
     reg signed [(pDATA_WIDTH-1):0] golden_list[0:(Data_Num-1)];
 
     initial begin
-        // $dumpfile("fir.vcd");
-        // $dumpvars();
-        $fsdbDumpfile("fir.fsdb");
+        $dumpfile("fir.vcd");
+        $dumpvars();
+        //$fsdbDumpfile("fir.fsdb");
         // $fsdbDumpvars(0, testbed, "+mda");
-        $fsdbDumpvars(0, fir_tb, "+mda");
+        //$fsdbDumpvars(0, fir_tb, "+mda");
     end
 
 
@@ -155,8 +155,8 @@ module fir_tb
     integer Din, golden, input_data, golden_data, m;
     initial begin
         data_length = 0;
-        Din = $fopen("./samples_triangular_wave.dat","r");
-        golden = $fopen("./out_gold.dat","r");
+        Din = $fopen("./src/samples_triangular_wave.dat","r");
+        golden = $fopen("./src/out_gold.dat","r");
         for(m=0;m<Data_Num;m=m+1) begin
             input_data = $fscanf(Din,"%d", Din_list[m]);
             golden_data = $fscanf(golden,"%d", golden_list[m]);
